@@ -1,26 +1,25 @@
 <template>
-  <div class="carousel-container">
-    <transition-group 
-      name="carousel-animation" 
-      tag="div" 
-      class="carousel">
-      <slide 
-        v-for="slide in slides" 
-        :key="slide.title">
-        {{ slide.title }}
-        {{ slide.content }}
-        <button></button>
-      </slide>
+  <div class='carousel-view'>
+    <h1 class='carousel-view__header'> Transition-Group Carousel Example </h1>
+    <transition-group
+      name='carousel'
+      class='carousel'
+      tag="div">
+      <div
+        v-for="(slide, index) in slides" 
+        class='slide'
+        :key="slide.id">
+        <img class='slide__image' :src='slide.imgLink'>
+      </div>
     </transition-group>
     <div class='carousel-controls'>
-      <button @click="previous">prev</button>
-      <button @click="next">next</button>
-     </div>
+      <button class='carousel-controls__button' @click="previous">prev</button>
+      <button class='carousel-controls__button' @click="next">next</button>
+    </div>
   </div>
 </template>
 
 <script>
-import throttle from 'lodash.throttle'
 import Slide from './Slide'
 
 export default {
@@ -30,32 +29,24 @@ export default {
     return {
       slides: [
         {
-          title: 'The Letter A',
-          content: 'I am the first letter. None is like me.'
+          imgLink: require('./assets/catA.jpg'),
+          id: 1
         },
         {
-          title: 'The Letter B',
-          content: 'I am the second letter'
+          imgLink: require('./assets/catB.jpg'),
+          id: 2
         },
         {
-          title: 'The Letter C',
-          content: 'I am the third letter'
+          imgLink: require('./assets/catC.jpg'),
+          id: 3
         },
         {
-          title: 'The Letter D',
-          content: 'I am the fourth letter'
+          imgLink: require('./assets/catD.jpg'),
+          id: 4
         },
         {
-          title: 'The Letter E',
-          content: 'I am the fifth letter'
-        },
-        {
-          title: 'The Letter F',
-          content: 'I am the sixth letter'
-        },
-        {
-          title: 'The Letter G',
-          content: 'I am the seventh letter'
+          imgLink: require('./assets/catE.jpg'),
+          id: 5
         }
       ]
     }
@@ -66,39 +57,126 @@ export default {
   },
 
   methods: {
-    previous: throttle(function () {
-      this.slides = [ this.slides.pop() ].concat(this.slides)
-    }, 500),
-    next: throttle(function () {
-      this.slides = this.slides.concat(this.slides.shift())
-    }, 500)
+    next () {
+      const first = this.slides.shift()
+      this.slides = this.slides.concat(first)
+    },
+    previous () {
+      const last = this.slides.pop()
+      this.slides = [last].concat(this.slides)
+    }
   }
 }
 </script>
 
-<style lang='scss' scoped>
+<style>
+body, html {
+  margin: 0;
+  background-color: #BACAB9;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
 
-.carousel-container {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 12px;
+.carousel-view__header {
+  color: #fff;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #A47565;
+}
+
+.carousel-view {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(rgba(176, 212, 214, 1) 20%, transparent 0);
+  background-size: 20em 20em;
+  background-position: left;
 }
 
 .carousel {
   display: flex;
   justify-content: center;
+  border: 1em dashed #BACAB9;
+  width: 25em;
+  overflow: hidden;
+  background-color: #83B4AE;
 }
 
-.carousel-controls button {
+.carousel-controls {
+  margin: 2em;
+}
+
+.carousel-controls__button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.carousel-controls__button:nth-of-type(1):hover {
+  animation: underlineToDots 0.5s infinite linear;
+}
+.carousel-controls__button:nth-of-type(2):hover {
+  animation: underlineToDots 0.5s infinite linear;
+}
+
+@keyframes underlineToDots {
+  0% {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+  }
+  100% {
+    text-decoration-style: solid;
+  }
+}
+
+.carousel-controls__button {
+  font-family: inherit;
+  outline: none;
+  transition: all 0.5s;
+  color: #fff;
+  border-radius: 10%;
+  border: 5px dashed #A47565;
+  background-color: #83B4AE;
+  margin: 0 2em;
   font-size: 3em;
-  margin: 0 1em;
-  padding: 0.2em;
 }
 
-.carousel-animation-move {
-  transition: transform 0.5s;
+.carousel-anim-move {
+  transition: transform 0.5s linear;
+}
+
+.slide {
+  backface-visibility: hidden; /* deal dashed border */
+  -moz-backface-visibility: inherit;
+  transform: translateZ(0) scale(1.0, 1.0);
+  -moz-transform: translate3d(0, 0, 0);
+  flex: 0 0 20em;
+  height: 20em;
+  margin: 1em;
+  border: 0.6em dashed #A47565;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide:first-of-type {
+  opacity: 0;
+  z-index: -1;
+}
+
+.slide:last-of-type {
+  opacity: 0;
+  z-index: -1;
+}
+
+.slide__image {
+  width: auto;
+  height: 110%;
+  display: flex;
 }
 </style>
