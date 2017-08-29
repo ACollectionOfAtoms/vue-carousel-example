@@ -20,7 +20,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'carousel',
 
@@ -49,10 +48,6 @@ export default {
         }
       ]
     }
-  },
-
-  components: {
-    Slide
   },
 
   methods: {
