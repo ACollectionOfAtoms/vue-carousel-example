@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import Slide from './Slide'
 
 export default {
   name: 'carousel',
@@ -76,13 +75,6 @@ body, html {
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
-.carousel-view__header {
-  color: #fff;
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: #A47565;
-}
-
 .carousel-view {
   height: 100vh;
   display: flex;
@@ -92,6 +84,13 @@ body, html {
   background-image: radial-gradient(rgba(176, 212, 214, 1) 20%, transparent 0);
   background-size: 20em 20em;
   background-position: left;
+}
+
+.carousel-view__header {
+  color: #fff;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #A47565;
 }
 
 .carousel {
@@ -141,12 +140,8 @@ body, html {
   font-size: 3em;
 }
 
-.carousel-anim-move {
-  transition: transform 0.5s linear;
-}
-
 .slide {
-  backface-visibility: hidden; /* deal dashed border */
+  backface-visibility: hidden; /* deal with dashed border animating oddly */
   -moz-backface-visibility: inherit;
   transform: translateZ(0) scale(1.0, 1.0);
   -moz-transform: translate3d(0, 0, 0);
