@@ -91,10 +91,44 @@ body, html {
 .carousel {
   display: flex;
   justify-content: center;
-  border: 1em dashed #BACAB9;
+  align-items: center;
+
   width: 25em;
+  min-height: 25em;
+
+  border: 1em dashed #BACAB9;
   overflow: hidden;
   background-color: #83B4AE;
+}
+
+.slide {
+  transform: translateZ(0) scale(1.0, 1.0);
+  height: 20em;
+  border: 0.6em dashed #A47565;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  opacity: 1;
+
+  margin: 1em;
+  flex: 0 0 20em;
+}
+
+.slide:first-of-type {
+  opacity: 0;
+}
+
+.slide:last-of-type {
+  opacity: 0;
+}
+
+.slide__image {
+  width: auto;
+  height: 110%;
+  display: flex;
 }
 
 .carousel-controls {
@@ -126,47 +160,11 @@ body, html {
 .carousel-controls__button {
   font-family: inherit;
   outline: none;
-  transition: all 0.5s;
   color: #fff;
   border-radius: 10%;
   border: 5px dashed #A47565;
   background-color: #83B4AE;
   margin: 0 2em;
   font-size: 3em;
-}
-
-.slide {
-  backface-visibility: hidden; /* deal with dashed border animating oddly */
-  -moz-backface-visibility: inherit;
-  transform: translateZ(0) scale(1.0, 1.0);
-  -moz-transform: translate3d(0, 0, 0);
-  flex: 0 0 20em;
-  height: 20em;
-  margin: 1em;
-  border: 0.6em dashed #A47565;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
-  opacity: 1;
-  z-index: 1;
-}
-
-.slide:first-of-type {
-  opacity: 0;
-  z-index: -1;
-}
-
-.slide:last-of-type {
-  opacity: 0;
-  z-index: -1;
-}
-
-.slide__image {
-  width: auto;
-  height: 110%;
-  display: flex;
 }
 </style>
