@@ -93,7 +93,7 @@ body, html {
   justify-content: center;
   align-items: center;
 
-  width: 25em;
+  width: 26em;
   min-height: 25em;
 
   border: 1em dashed #BACAB9;
@@ -103,7 +103,6 @@ body, html {
 
 .slide {
   transform: translateZ(0) scale(1.0, 1.0);
-  height: 20em;
   border: 0.6em dashed #A47565;
   border-radius: 50%;
   display: flex;
@@ -115,6 +114,7 @@ body, html {
 
   margin: 1em;
   flex: 0 0 20em;
+  height: 20em;
 }
 
 .slide:first-of-type {
@@ -166,5 +166,25 @@ body, html {
   background-color: #83B4AE;
   margin: 0 2em;
   font-size: 3em;
+}
+
+@media only screen and (min-width: 400px) {
+    body {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    }
+
+    .carousel-view__header {
+      font-size: 3em;
+    }
+
+    .carousel {
+      width: 50em;
+      min-height: 50em;
+    }
+    
+    .slide {
+      flex: 0 0 44em;
+      height: 44em;
+    }
 }
 </style>
