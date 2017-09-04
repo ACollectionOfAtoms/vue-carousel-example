@@ -67,7 +67,7 @@ export default {
 body, html {
   margin: 0;
   background-color: #BACAB9;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
 }
 
 .carousel-view {
@@ -86,6 +86,7 @@ body, html {
   text-decoration-line: underline;
   text-decoration-style: wavy;
   text-decoration-color: #A47565;
+  text-align: center;
 }
 
 .carousel {
@@ -93,17 +94,17 @@ body, html {
   justify-content: center;
   align-items: center;
 
-  width: 26em;
-  min-height: 25em;
+  width: 18em;
+  min-height: 16em;
 
-  border: 1em dashed #BACAB9;
+  border: 0.5em dashed #BACAB9;
   overflow: hidden;
   background-color: #83B4AE;
 }
 
 .slide {
   transform: translateZ(0) scale(1.0, 1.0);
-  border: 0.6em dashed #A47565;
+  border: 0.2em dashed #A47565;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -112,9 +113,9 @@ body, html {
   transition: transform 0.3s ease-in-out;
   opacity: 1;
 
+  flex: 0 0 12em;
+  height: 12em;
   margin: 1em;
-  flex: 0 0 20em;
-  height: 20em;
 }
 
 .slide:first-of-type {
@@ -132,7 +133,7 @@ body, html {
 }
 
 .carousel-controls {
-  margin: 2em;
+  margin: 1em;
 }
 
 .carousel-controls__button:hover {
@@ -162,29 +163,31 @@ body, html {
   outline: none;
   color: #fff;
   border-radius: 10%;
-  border: 5px dashed #A47565;
+  border: 2px dashed #A47565;
   background-color: #83B4AE;
-  margin: 0 2em;
-  font-size: 3em;
+  margin: 0 1em;
+  font-size: 1.5em;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width : 768px) {
     body {
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+      font-family: "Comic Sans MS", cursive, sans-serif;
     }
 
     .carousel-view__header {
-      font-size: 3em;
+      font-size: 2em;
     }
 
     .carousel {
-      width: 50em;
-      min-height: 50em;
+      border: 1em dashed #BACAB9;
+      width: 26em;
+      min-height: 25em;
     }
     
     .slide {
-      flex: 0 0 44em;
-      height: 44em;
+      border: 0.8em dashed #A47565;
+      flex: 0 0 20em;
+      height: 20em;
     }
 }
 </style>
